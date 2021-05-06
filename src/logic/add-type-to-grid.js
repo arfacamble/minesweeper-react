@@ -26,8 +26,6 @@ const isTileMine = (id, grid) => {
 }
 
 const determineTileType = (tile, grid) => {
-  console.log(tile);
-  console.log(grid);
   if (tile.mine) {
     tile.type = '*';
   } else {
@@ -35,6 +33,7 @@ const determineTileType = (tile, grid) => {
     const minesSurrounding = surroundingTileIds.map(id => isTileMine(id, grid));
     tile.type = minesSurrounding.filter(val => val).length
   }
+  tile.display = 'unopened';
   return tile;
 }
 
@@ -53,6 +52,6 @@ const addTypeToGrid = (grid) => {
 
 // console.log(determineTileType(exampleGrid[5], exampleGrid));
 
-// console.log(addTypeToGrid(exampleGrid))
+console.log(addTypeToGrid(exampleGrid))
 
 module.exports = { addTypeToGrid }
